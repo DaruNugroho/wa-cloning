@@ -20,23 +20,29 @@ class _State extends State<StatusScreen> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          MyStatus(),
-          Text(
-            "Pembaruan terkini",
-            style: TextStyle(
-              fontSize: 14.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.black54,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            MyStatus(),
+            Text(
+              "Pembaruan terkini",
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black54,
+              ),
             ),
-          ),
-          ItemStatus(name: "Dion", time: 19),
-          ItemStatus(name: "Meli", time: 2),
-          ItemStatus(name: "Bolot", time: 3),
-          ItemStatus(name: "Denot", time: 45),
-        ],
+            ItemStatus(name: "Dion", time: 19),
+            ItemStatus(name: "Meli", time: 2),
+            ItemStatus(name: "Bolot", time: 3),
+            ItemStatus(name: "Denot", time: 45),
+            ItemStatus(name: "Dion", time: 19),
+            ItemStatus(name: "Meli", time: 2),
+            ItemStatus(name: "Bolot", time: 3),
+            ItemStatus(name: "Denot", time: 45),
+          ],
+        ),
       ),
     );
   }
@@ -63,6 +69,7 @@ class MyStatus extends StatelessWidget {
       subtitle: Text(
         'Ketuk untuk menambahkan pembaruan',
         style: TextStyle(fontSize: 13.0),
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
