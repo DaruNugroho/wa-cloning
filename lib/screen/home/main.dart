@@ -1,49 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:my_whatsapp/config/theme/light.dart';
-import 'package:my_whatsapp/controller/providers/moon.dart';
 import 'package:my_whatsapp/screen/callhistory/main.dart';
 import 'package:my_whatsapp/screen/listchatting/main.dart';
 import 'package:my_whatsapp/screen/status/main.dart';
-import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  final String title = "WhatsApp";
+  const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ProviderMoon(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(primarySwatch: AppColors.primary),
-        home: const CheckAuth(),
-      ),
-    );
-  }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp(
-  //     title: 'WhatsApp',
-  //     theme: ThemeData(primarySwatch: AppColors.primary),
-  //     home: const CheckAuth(),
-  //   );
-  // }
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage>
+class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int selectedIndex = 0;
@@ -131,21 +99,5 @@ class _MyHomePageState extends State<MyHomePage>
           );
         }
     }
-  }
-}
-
-class CheckAuth extends StatelessWidget {
-  const CheckAuth({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<ProviderMoon>(builder: (context, provMoon, _) {
-      provMoon.checkLogin(context);
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    });
   }
 }
