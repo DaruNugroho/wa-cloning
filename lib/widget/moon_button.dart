@@ -53,7 +53,7 @@ class MoonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //const borerRadius = 50.0;
-    const borerRadius = 4.0;
+    const borerRadius = 32.0;
     Color primary = customColor ?? Theme.of(context).primaryColor;
 
     Widget buildText(String text, Color color) {
