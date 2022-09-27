@@ -6,107 +6,83 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Quantums',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 42.0,
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(
-                top: 24.0,
-                bottom: 24.0,
-              ),
-              child: Text(
-                "Log in untuk melanjutkan ke halaman QTeams",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Center(
-              child: Card(
-                shadowColor: Colors.black,
-                elevation: 4.0,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 24.0, horizontal: 16.0),
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width,
+        child: Expanded(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 24.0),
+                    child: Image.asset('./assets/images/splash1.png'),
+                  ),
+                  SizedBox(
+                    //color: Colors.greenAccent,
+                    height: size.height / 2,
+                    width: size.width,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        const Text(
-                          "Login",
-                          style: TextStyle(
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.bold,
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 4.0),
+                          child: Text(
+                            'Log In',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
+                        const Text(
+                          'Kami akan mengirimkan 4 digit kode verifikasi',
+                          textAlign: TextAlign.center,
+                        ),
                         const SizedBox(
-                          height: 42.0,
+                          // height: 48.0,
                           child: TextField(
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
-                              label: Text(
-                                'Pilih Negara',
-                                style: TextStyle(fontSize: 14.0),
-                              ),
+                              label: Text('Negara'),
+                              hintText: 'Pilih Negara',
                             ),
                           ),
                         ),
                         const SizedBox(
-                          height: 42.0,
+                          // height: 48.0,
                           child: TextField(
-                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
-                              label: Text(
-                                'No. Telp',
-                                style: TextStyle(fontSize: 14.0),
-                              ),
+                              label: Text('No. Telp'),
+                              hintText: 'Nomor Telepon',
                             ),
                           ),
                         ),
                         const MoonButton(
-                          text: "Kirim Kode OTP",
+                          text: 'KIRIM KODE OTP',
                           fullWidth: true,
-                          customColor: Colors.blue,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const <Widget>[
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text('Belum Punya Akun ?'),
                             Text(
-                              'Belum Punya Akun ?',
+                              'Daftar',
                               style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
+                                color: Colors.purple[900],
                               ),
                             ),
-                            Text(
-                              'Daftar Dulu',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue,
-                              ),
-                            )
                           ],
-                        ),
+                        )
                       ],
                     ),
                   ),
-                ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

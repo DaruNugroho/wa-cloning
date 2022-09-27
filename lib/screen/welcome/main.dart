@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:my_whatsapp/screen/login/login.dart';
 import 'package:my_whatsapp/widget/moon_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -100,6 +101,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
           ),
           CarouselSlider(
+            carouselController: carouselCtrl,
             items: [0, 1, 2]
                 .map(
                   (item) => Image.asset(
@@ -140,11 +142,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               textAlign: TextAlign.center,
             ),
           ),
-          const MoonButton(
+          MoonButton(
             text: 'Lewati',
+            onPressed: onClickMoonButton,
           ),
         ],
       ),
     ));
+  }
+
+  void onClickMoonButton() {
+    if (_page == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginScreen(),
+        ),
+      );
+    } else {
+      carouselCtrl.nextPage();
+    }
   }
 }
