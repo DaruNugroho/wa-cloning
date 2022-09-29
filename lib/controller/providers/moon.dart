@@ -19,7 +19,7 @@ class ProviderMoon extends ChangeNotifier {
     String? value = await storage.read(key: 'isAuth');
     if (true) {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return WelcomeScreen();
+        return const WelcomeScreen();
       }));
     } else {
       Navigator.push(context, MaterialPageRoute(builder: (context) {

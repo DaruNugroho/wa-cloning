@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum CallType { INCOMMING_CALL, OUTGOING_CALL, VIDEO_CALL }
+enum CallType { inCommingCall, outGoingCall, videoCall }
 
 class HistoryCallScreen extends StatefulWidget {
   const HistoryCallScreen({Key? key}) : super(key: key);
@@ -11,13 +11,13 @@ class HistoryCallScreen extends StatefulWidget {
 
 class _HistoryCallScreenState extends State<HistoryCallScreen> {
   List<Call> listCall = [
-    Call("Agustina", "20.00", CallType.OUTGOING_CALL),
-    Call("Ahmad Faza", "20.00", CallType.INCOMMING_CALL),
-    Call("Dion", "20.00", CallType.VIDEO_CALL),
-    Call("Deni", "20.00", CallType.OUTGOING_CALL),
-    Call("Dwiki", "07.00", CallType.INCOMMING_CALL),
-    Call("Bolot", "20.00", CallType.VIDEO_CALL),
-    Call("Aldi", "20.00", CallType.OUTGOING_CALL)
+    Call("Agustina", "20.00", CallType.outGoingCall),
+    Call("Ahmad Faza", "20.00", CallType.inCommingCall),
+    Call("Dion", "20.00", CallType.videoCall),
+    Call("Deni", "20.00", CallType.outGoingCall),
+    Call("Dwiki", "07.00", CallType.inCommingCall),
+    Call("Bolot", "20.00", CallType.videoCall),
+    Call("Aldi", "20.00", CallType.outGoingCall)
   ];
 
   @override
@@ -81,7 +81,7 @@ class _ItemHistoryState extends State<ItemHistory> {
 
   Icon iconType(CallType callType) {
     switch (callType) {
-      case CallType.INCOMMING_CALL:
+      case CallType.inCommingCall:
         {
           return const Icon(
             Icons.call_made,
@@ -89,7 +89,7 @@ class _ItemHistoryState extends State<ItemHistory> {
             size: 16.0,
           );
         }
-      case CallType.OUTGOING_CALL:
+      case CallType.outGoingCall:
         {
           return const Icon(
             Icons.call_received,
@@ -97,7 +97,7 @@ class _ItemHistoryState extends State<ItemHistory> {
             size: 16.0,
           );
         }
-      case CallType.VIDEO_CALL:
+      case CallType.videoCall:
         {
           return const Icon(
             Icons.call_received,
@@ -110,15 +110,15 @@ class _ItemHistoryState extends State<ItemHistory> {
 
   IconData typeIconCall(CallType callType) {
     switch (callType) {
-      case CallType.INCOMMING_CALL:
+      case CallType.inCommingCall:
         {
           return Icons.call;
         }
-      case CallType.OUTGOING_CALL:
+      case CallType.outGoingCall:
         {
           return Icons.call;
         }
-      case CallType.VIDEO_CALL:
+      case CallType.videoCall:
         {
           return Icons.videocam_rounded;
         }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 ThemeData get lightTheme {
   return ThemeData(
     fontFamily: 'Poppins',
@@ -59,7 +58,7 @@ class AppColors {
   static const MaterialColor primary = MaterialColor(
     0xFF075E54,
     <int, Color>{
-      50: Color(0xFFFe0f2f1),
+      50: Color(0xFFe0f2f1),
       100: Color(0xFFb2dfdb),
       200: Color(0xFF80cbc4),
       300: Color(0xFF4db6ac),
@@ -96,7 +95,8 @@ class AppColors {
   static lighten(Color color, [double amount = .1]) {
     assert(amount >= 0 && amount <= 1);
     final hsl = HSLColor.fromColor(color);
-    final hslLight = hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
+    final hslLight =
+        hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
     return hslLight.toColor();
   }
 

@@ -67,7 +67,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
           SizedBox(
             height: 70.0,
             child: MessageBar(
-              onSend: (String) {
+              onSend: (String str) {
                 var message = const BubbleSpecialOne(text: "text");
                 setState(() {
                   _message.insert(0, message);
