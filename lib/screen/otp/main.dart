@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:my_whatsapp/screen/home/main.dart';
 import 'package:my_whatsapp/widget/moon_button.dart';
 
@@ -40,6 +41,34 @@ class VerificationScreen extends StatelessWidget {
                         const Text(
                           'Masukkan kode OTP yang dikirimkan ke nomor +6282288223322',
                           textAlign: TextAlign.center,
+                        ),
+                        OtpTextField(
+                          numberOfFields: 6,
+                          borderColor: Color(0xFF512DA8),
+                          //set to true to show as box or false to show as dash
+                          showFieldAsBox: true,
+                          //runs when a code is typed in
+                          onCodeChanged: (String code) {
+                            //handle validation or checks here
+                          },
+                          //runs when every textfield is filled
+                          onSubmit: (String verificationCode) {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text("Verification Code"),
+                                    content: Text(
+                                        'Code entered is $verificationCode'),
+                                  );
+                                });
+                          }, // end onSubmit
+                        ),
+                        Text(
+                          '00.30',
+                          style: TextStyle(
+                            color: Colors.purple[900],
+                          ),
                         ),
                         MoonButton(
                           text: 'Masuk',
