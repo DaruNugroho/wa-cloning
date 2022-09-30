@@ -1,9 +1,22 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:my_whatsapp/screen/home/main.dart';
 import 'package:my_whatsapp/widget/moon_button.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+  SignUpScreen({super.key});
+
+  final List<String> items = [
+    'Item1',
+    'Item2',
+    'Item3',
+    'Item4',
+    'Item5',
+    'Item6',
+    'Item7',
+    'Item8',
+  ];
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -42,29 +55,51 @@ class SignUpScreen extends StatelessWidget {
                         'Kami akan mengirimkan 4 digit kode verifikasi',
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 54.0,
                         child: TextField(
-                          decoration: InputDecoration(
+                          scrollPadding: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             label: Text('Nama'),
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 54.0,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            label: Text('Negara'),
+                      DropdownButtonFormField2(
+                        buttonHeight: 16.0,
+                        hint: const Text('Pilih Negara'),
+                        isExpanded: true,
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
                           ),
                         ),
+                        items: items
+                            .map(
+                              (item) => DropdownMenuItem(
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            )
+                            .toList(),
+                        value: selectedValue,
+                        onChanged: ((value) {}),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 54.0,
                         child: TextField(
+                          scrollPadding: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).viewInsets.bottom),
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             label: Text('Nomor Telepon'),
                           ),
@@ -82,6 +117,28 @@ class SignUpScreen extends StatelessWidget {
                           );
                         },
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Text('Sudah Punya Akun ? '),
+                          GestureDetector(
+                            child: Text(
+                              'Masuk',
+                              style: TextStyle(
+                                color: Colors.purple[900],
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomeScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),

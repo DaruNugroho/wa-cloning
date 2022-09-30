@@ -1,15 +1,29 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:my_whatsapp/screen/otp/main.dart';
 import 'package:my_whatsapp/screen/signup/main.dart';
 import 'package:my_whatsapp/widget/moon_button.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+
+  final List<String> items = [
+    'Item1',
+    'Item2',
+    'Item3',
+    'Item4',
+    'Item5',
+    'Item6',
+    'Item7',
+    'Item8',
+  ];
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -42,20 +56,41 @@ class LoginScreen extends StatelessWidget {
                         'Kami akan mengirimkan 4 digit kode verifikasi',
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(
-                        height: 54.0,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            label: Text('Negara'),
+                      DropdownButtonFormField2(
+                        buttonHeight: 16.0,
+                        hint: const Text('Pilih Negara'),
+                        isExpanded: true,
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
                           ),
                         ),
+                        items: items
+                            .map(
+                              (item) => DropdownMenuItem(
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            )
+                            .toList(),
+                        value: selectedValue,
+                        onChanged: ((value) {}),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 54.0,
                         child: TextField(
+                          scrollPadding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom,
+                          ),
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             label: Text('No. Telp'),
                           ),
@@ -88,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SignUpScreen(),
+                                  builder: (context) => SignUpScreen(),
                                 ),
                               );
                             },
