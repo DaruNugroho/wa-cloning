@@ -13,6 +13,7 @@ class MoonButton extends StatelessWidget {
   final bool? disabled;
   final bool? hideTextMobile;
   final bool? isLoading;
+  final double? borderRadius;
   final Function()? onPressed;
 
   Color lighten(Color color, [double amount = .1]) {
@@ -31,27 +32,28 @@ class MoonButton extends StatelessWidget {
     return hslDark.toColor();
   }
 
-  const MoonButton({
-    Key? key,
-    this.onPressed,
-    required this.text,
-    this.size = 'md',
-    this.startIcon,
-    this.fullWidth = false,
-    this.hideTextMobile = false,
-    this.disabled = false,
-    this.isLoading = false,
-    this.endIcon,
-    this.variant,
-    this.color,
-    this.customColor,
-    this.textColor = Colors.white,
-  }) : super(key: key);
+  const MoonButton(
+      {Key? key,
+      this.onPressed,
+      required this.text,
+      this.size = 'md',
+      this.startIcon,
+      this.fullWidth = false,
+      this.hideTextMobile = false,
+      this.disabled = false,
+      this.isLoading = false,
+      this.endIcon,
+      this.variant,
+      this.color,
+      this.customColor,
+      this.textColor = Colors.white,
+      this.borderRadius = 32.0})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //const borerRadius = 50.0;
-    const borerRadius = 32.0;
+    //const borerRadius = 32.0;
     Color primary = customColor ?? Theme.of(context).primaryColor;
 
     Widget buildText(String text, Color color) {
@@ -160,7 +162,7 @@ class MoonButton extends StatelessWidget {
               height: getHeight(size),
               onPressed: disabled! ? null : onPressed,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(borerRadius)),
+                  borderRadius: BorderRadius.circular(borderRadius!)),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
@@ -193,7 +195,7 @@ class MoonButton extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   side: BorderSide(
                       color: primary, width: 0.5, style: BorderStyle.solid),
-                  borderRadius: BorderRadius.circular(borerRadius)),
+                  borderRadius: BorderRadius.circular(borderRadius!)),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
@@ -222,8 +224,8 @@ class MoonButton extends StatelessWidget {
           child: MaterialButton(
             minWidth: getWidth(fullWidth),
             height: getHeight(size),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(borerRadius)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(borderRadius!)),
             ),
             disabledColor: color != null
                 ? buildColor(color!, true)
@@ -264,8 +266,8 @@ class MoonButton extends StatelessWidget {
           child: MaterialButton(
             height: getHeight(size),
             minWidth: getWidth(fullWidth),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(borerRadius)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(borderRadius!)),
             ),
             color: color != null ? buildColor(color!, false) : primary,
             disabledColor: color != null ? buildColor(color!, false) : primary,

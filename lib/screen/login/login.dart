@@ -8,14 +8,8 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
   final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
-    'Item5',
-    'Item6',
-    'Item7',
-    'Item8',
+    'Indonesia',
+    'Malaysia',
   ];
   String? selectedValue;
 
@@ -107,6 +101,7 @@ class LoginScreen extends StatelessWidget {
                             ),
                           );
                         },
+                        borderRadius: 8.0,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

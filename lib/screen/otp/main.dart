@@ -81,6 +81,7 @@ class VerificationScreen extends StatelessWidget {
                               ),
                             );
                           },
+                          borderRadius: 8.0,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
