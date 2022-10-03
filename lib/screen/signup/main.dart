@@ -59,7 +59,10 @@ class SignUpScreen extends StatelessWidget {
                         height: 54.0,
                         child: TextField(
                           scrollPadding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                            bottom: MediaQuery.of(context)
+                                .viewInsets
+                                .bottom, // supaya tombol tidak tertutup
+                          ),
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             label: Text('Nama'),
@@ -97,7 +100,9 @@ class SignUpScreen extends StatelessWidget {
                         height: 54.0,
                         child: TextField(
                           scrollPadding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                            // supaya tombol tidak tertutup keyboard
+                            bottom: MediaQuery.of(context).viewInsets.bottom,
+                          ),
                           keyboardType: TextInputType.number,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),

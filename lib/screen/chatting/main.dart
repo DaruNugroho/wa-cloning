@@ -41,12 +41,25 @@ class _ChattingScreenState extends State<ChattingScreen> {
             )
           ],
         ),
-        actions: const [
-          Icon(Icons.videocam),
-          SizedBox(
-            width: 8.0,
+        actions: [
+          const Padding(
+            padding: EdgeInsets.only(right: 24.0),
+            child: Icon(Icons.videocam),
           ),
-          Icon(Icons.call),
+          const Icon(Icons.call),
+          PopupMenuButton(
+            padding: const EdgeInsets.symmetric(horizontal: 22.0),
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+              const PopupMenuItem(child: Text('Lihat kontak')),
+              const PopupMenuItem(child: Text('Media, tautan, dan dok')),
+              const PopupMenuItem(child: Text('Cari')),
+              const PopupMenuItem(child: Text('Bisukan notifikasi')),
+              const PopupMenuItem(child: Text('Pesan sementara')),
+              const PopupMenuItem(child: Text('Wallpaper')),
+              const PopupMenuItem(child: Text('Lainnya')),
+            ],
+          ),
         ],
       ),
       body: Column(

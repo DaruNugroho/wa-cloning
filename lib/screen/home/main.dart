@@ -43,8 +43,21 @@ class _HomeScreenState extends State<HomeScreen>
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false, // meghapus tanda panah/leading
           title: Text(widget.title),
-          actions: const [Icon(Icons.search)],
+          actions: [
+            const Icon(Icons.search),
+            PopupMenuButton(
+              icon: const Icon(Icons.more_vert),
+              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                const PopupMenuItem(child: Text('Grup baru')),
+                const PopupMenuItem(child: Text('Siaran baru')),
+                const PopupMenuItem(child: Text('Perangkat tertaut')),
+                const PopupMenuItem(child: Text('Pesan berbintang')),
+                const PopupMenuItem(child: Text('Setelan')),
+              ],
+            ),
+          ],
           bottom: TabBar(
             controller: _tabController,
             tabs: [
