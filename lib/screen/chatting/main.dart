@@ -62,35 +62,105 @@ class _ChattingScreenState extends State<ChattingScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 7,
-            child: SingleChildScrollView(
-              child: Column(
-                children: const <Widget>[
-                  BubbleSpecialOne(
-                    text: "TESTING",
-                    seen: true,
-                    isSender: true,
-                  ),
-                ],
+      backgroundColor: Colors.amber[50],
+      body: Padding(
+        padding:
+            const EdgeInsets.only(left: 3.0, top: 0.0, right: 3.0, bottom: 3.0),
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: const <Widget>[
+                    BubbleSpecialOne(
+                      text: "P",
+                      seen: true,
+                      isSender: true,
+                    ),
+                    BubbleSpecialOne(
+                      text: "P",
+                      seen: true,
+                      isSender: true,
+                    ),
+                    BubbleSpecialOne(
+                      text: "P",
+                      seen: true,
+                      isSender: true,
+                    ),
+                    BubbleSpecialOne(
+                      text: "P",
+                      seen: true,
+                      isSender: true,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 70.0,
-            child: MessageBar(
-              onSend: (String str) {
-                var message = const BubbleSpecialOne(text: "text");
-                setState(() {
-                  _message.insert(0, message);
-                });
-              },
-              replyingTo: _textController.text,
-            ),
-          )
-        ],
+            SizedBox(
+              height: 70.0,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: SizedBox(
+                        child: TextField(
+                          controller: _textController,
+                          keyboardType: TextInputType.multiline,
+                          textCapitalization: TextCapitalization.sentences,
+                          minLines: 1,
+                          maxLines: 3,
+                          decoration: InputDecoration(
+                            prefixIcon:
+                                const Icon(Icons.emoji_emotions_outlined),
+                            hintText: "Ketik pesan",
+                            suffixIcon: const Icon(Icons.camera_alt),
+                            hintMaxLines: 1,
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 8.0, vertical: 10),
+                            hintStyle: const TextStyle(
+                              fontSize: 16.0,
+                            ),
+                            fillColor: Colors.white,
+                            filled: true,
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: const BorderSide(
+                                color: Colors.white,
+                                width: 0.2,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: const BorderSide(
+                                color: Colors.black26,
+                                width: 0.2,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 3.0),
+                      decoration: BoxDecoration(
+                          color: Colors.teal,
+                          borderRadius: BorderRadius.circular(50.0)),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Icon(
+                          Icons.mic,
+                          size: 28.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
