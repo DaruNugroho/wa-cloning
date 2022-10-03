@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ThemeData get lightTheme {
   return ThemeData(
     fontFamily: 'Poppins',
     highlightColor: AppColors.primary,
     colorScheme: _customColorScheme,
-    textTheme: const TextTheme(
-      bodyText1: TextStyle(
+    textTheme: TextTheme(
+      headline1: GoogleFonts.poppins(
+          fontSize: 97, fontWeight: FontWeight.w300, letterSpacing: -1.5),
+      bodyText1: const TextStyle(
         fontSize: 14,
         color: customMagenta300,
       ),

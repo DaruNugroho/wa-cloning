@@ -19,6 +19,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leadingWidth: 18.0,
         title: Row(
           children: <Widget>[
             const CircleAvatar(),
