@@ -69,31 +69,13 @@ class _ChattingScreenState extends State<ChattingScreen> {
         child: Column(
           children: <Widget>[
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: const <Widget>[
-                    BubbleSpecialOne(
-                      text: "P",
-                      seen: true,
-                      isSender: true,
-                    ),
-                    BubbleSpecialOne(
-                      text: "P",
-                      seen: true,
-                      isSender: true,
-                    ),
-                    BubbleSpecialOne(
-                      text: "P",
-                      seen: true,
-                      isSender: true,
-                    ),
-                    BubbleSpecialOne(
-                      text: "P",
-                      seen: true,
-                      isSender: true,
-                    ),
-                  ],
+              child: ListView.builder(
+                reverse: true,
+                itemBuilder: (_, index) => Align(
+                  alignment: Alignment.topRight,
+                  child: _message[index],
                 ),
+                itemCount: _message.length,
               ),
             ),
             SizedBox(
@@ -138,6 +120,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                               ),
                             ),
                           ),
+                          onSubmitted: sendMessage,
                         ),
                       ),
                     ),
@@ -146,12 +129,15 @@ class _ChattingScreenState extends State<ChattingScreen> {
                       decoration: BoxDecoration(
                           color: Colors.teal,
                           borderRadius: BorderRadius.circular(50.0)),
-                      child: const Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Icon(
-                          Icons.mic,
-                          size: 28.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.mic,
+                            size: 28.0,
+                          ),
                           color: Colors.white,
+                          onPressed: () => sendMessage(_textController.text),
                         ),
                       ),
                     ),
@@ -165,10 +151,10 @@ class _ChattingScreenState extends State<ChattingScreen> {
     );
   }
 
-  // void sendMessage() {
-  //   var message = BubbleSpecialOne(text: text);
-  //   setState(() {
-  //     _message.insert(0, message);
-  //   });
-  // }
+  void sendMessage(String text) {
+    var message = BubbleSpecialOne(text: text);
+    setState(() {
+      _message.insert(0, message);
+    });
+  }
 }
